@@ -1,0 +1,103 @@
+New simulator world detected: cleared controller state.
+Scenario public_01_dev from 2027-01-04T00:00:00+05:30 (3 workflows, credits 200.0)
+  proposal apr_00001 [explore] Explore welcome_message for nw_renewal across W1, W2, W3
+  proposal apr_00002 [explore] Explore caller_id for nw_kyc across D1, D2, D3
+  proposal apr_00003 [explore] Explore welcome_message for ks_cancel across W1, W2, W3
+  applied apr_00001 [explore] version 2
+  applied apr_00002 [explore] version 2
+  applied apr_00003 [explore] version 2
+  proposal apr_00004 [promote] Promote welcome_message=W3 for nw_renewal (engagement_rate +9.1pp)
+  applied apr_00004 [promote] version 3
+  proposal apr_00005 [promote] Promote caller_id=D2 for nw_kyc (pickup_rate +12.0pp)
+  applied apr_00005 [promote] version 3
+  proposal apr_00006 [health] Rotate caller_id away from D1 for ks_cancel (pickup 18.4% vs 27.3%)
+  proposal apr_00007 [rollback] Roll back caller_id=D2 for nw_kyc: decay detected
+  applied apr_00006 [health] version 3
+  proposal apr_00008 [abandon] Stop welcome_message exploration for ks_cancel: no significant winner
+  applied apr_00008 [abandon] version 4
+  applied apr_00007 [rollback] version 4
+  proposal apr_00009 [explore] Explore voice for ks_cancel across V1, V2, V3, V4
+Traceback (most recent call last):
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\controller.py", line 1145, in <module>
+    run()
+    ~~~^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\controller.py", line 1113, in run
+    ingest_chunk(conn, client, chunk)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\controller.py", line 259, in ingest_chunk
+    content = fetch_chunk(client, n)
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\controller.py", line 227, in fetch_chunk
+    response = client.get(f"/events/chunks/{n}")
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpx\_client.py", line 1053, in get
+    return self.request(
+           ~~~~~~~~~~~~^
+        "GET",
+        ^^^^^^
+    ...<7 lines>...
+        extensions=extensions,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpx\_client.py", line 928, in send
+    raise exc
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpx\_client.py", line 922, in send
+    response.read()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpx\_models.py", line 881, in read
+    self._content = b"".join(self.iter_bytes())
+                    ~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpx\_models.py", line 897, in iter_bytes
+    for raw_bytes in self.iter_raw():
+                     ~~~~~~~~~~~~~^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpx\_models.py", line 951, in iter_raw
+    for raw_stream_bytes in self.stream:
+                            ^^^^^^^^^^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpx\_client.py", line 153, in __iter__
+    for chunk in self._stream:
+                 ^^^^^^^^^^^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpx\_transports\default.py", line 127, in __iter__
+    for part in self._httpcore_stream:
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 407, in __iter__
+    raise exc from None
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 403, in __iter__
+    for part in self._stream:
+                ^^^^^^^^^^^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 342, in __iter__
+    raise exc
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 334, in __iter__
+    for chunk in self._connection._receive_response_body(**kwargs):
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 203, in _receive_response_body
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyboardInterrupt
+(.venv) PS C:\Users\vaish.DAMON\OneDrive\Desktop\agentic-universe-assessment> python controller.py
+Scenario public_01_dev from 2027-01-07T16:00:00+05:30 (3 workflows, credits 200.0)
+  proposal apr_00010 [explore] Explore caller_id for nw_kyc across D1, D2, D3
+  applied apr_00009 [explore] version 5
+  applied apr_00010 [explore] version 5
+  proposal apr_00011 [health] Rotate caller_id away from D2 for nw_renewal (pickup 25.8% vs 31.3%)
+  applied apr_00011 [health] version 4
+  proposal apr_00012 [abandon] Stop voice exploration for ks_cancel: no significant winner
+  proposal apr_00013 [abandon] Stop caller_id exploration for nw_kyc: no significant winner
+  applied apr_00012 [abandon] version 6
+  proposal apr_00014 [explore] Explore welcome_message for ks_cancel across W1, W2, W3
+  approval expired apr_00014: []
+  applied apr_00013 [abandon] version 6
+  proposal apr_00015 [explore] Explore caller_id for nw_kyc across D1, D2, D3
+  proposal apr_00016 [rollback] Roll back welcome_message=W3 for nw_renewal: decay detected
+  proposal apr_00017 [explore] Explore welcome_message for ks_cancel across W1, W2, W3
+  applied apr_00017 [explore] version 7
+  applied apr_00016 [rollback] version 5
+  proposal apr_00018 [explore] Explore voice for nw_renewal across V1, V2, V3, V4
+Finished public_01_dev at 2027-01-12T00:00:00+05:30: 224358 calls stored for 71718 leads, 200.0 credits remaining.

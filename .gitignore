@@ -1,0 +1,13 @@
+# Python environment and cache
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Database files (these get huge and are generated per run)
+*.duckdb
+*.wal
+*.duckdb.tmp
+
+# Local simulator run outputs (evaluators generate their own)
+runs/
